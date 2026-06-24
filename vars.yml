@@ -1,0 +1,15 @@
+version: 2
+
+vars:
+  env:                 "{{ env_var('DBT_ENV',             'dev') }}"
+  target_database:     "{{ env_var('DBT_TARGET_DB',       'BANK_DB') }}"
+  raw_database:        "{{ env_var('DBT_TARGET_DB',       'BANK_DB') }}"
+  raw_schema:          "{{ env_var('DBT_RAW_SCHEMA',      'RAW') }}"
+  staging_schema:      "{{ env_var('DBT_STAGING_SCHEMA',  'STAGING') }}"
+  intermediate_schema: "{{ env_var('DBT_INT_SCHEMA',      'INTERMEDIATE') }}"
+  marts_schema:        "{{ env_var('DBT_MARTS_SCHEMA',    'MARTS') }}"
+  snapshots_schema:    "{{ env_var('DBT_SNAP_SCHEMA',     'SNAPSHOTS') }}"
+  audit_schema:        "{{ env_var('DBT_AUDIT_SCHEMA',    'AUDIT') }}"
+  dag_id:              "{{ env_var('DBT_DAG_ID',          'manual_run') }}"
+  job_name:            "{{ env_var('DBT_JOB_NAME',        'dbt_manual') }}"
+  run_by:              "{{ env_var('DBT_RUN_BY',          'dbt_service') }}"

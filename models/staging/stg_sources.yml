@@ -1,0 +1,16 @@
+# models/staging/_sources.yml
+# Source database/schema resolved from dbt vars (set in the
+# dbt Cloud Environment Variables tab).
+version: 2
+
+sources:
+  - name: bank_raw
+    database: "{{ var('raw_database') }}"
+    schema:   "{{ var('raw_schema') }}"
+    tables:
+      - name: raw_customers
+      - name: raw_accounts
+      - name: raw_transactions
+      - name: raw_loans
+      - name: raw_loan_payments
+      - name: raw_credit_cards
