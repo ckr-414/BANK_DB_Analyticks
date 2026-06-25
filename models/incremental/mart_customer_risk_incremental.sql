@@ -13,6 +13,10 @@
     tags=['incremental','mart','risk','nightly']
 ) }}
 
+-- depends_on: {{ ref('stg_transactions') }}
+-- depends_on: {{ ref('stg_loan_payments') }}
+-- depends_on: {{ ref('stg_loans') }}
+
 {% if is_incremental() %}
 WITH changed AS (
     SELECT DISTINCT a.customer_id
