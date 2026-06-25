@@ -13,7 +13,7 @@ SELECT
     t.direction, t.gross_amount, t.signed_amount,
     t.category, t.merchant_name, t.status, t.amount_tier,
     DAYOFWEEK(t.transaction_date) AS day_of_week,
-    HOUR(t.transaction_date)      AS hour_of_day,
+    hour(cast(t.transaction_date as timestamp))  AS hour_of_day,
     {{ audit_columns() }}
 FROM {{ ref('stg_transactions') }} t
 JOIN {{ ref('stg_accounts') }} a ON t.account_id=a.account_id
