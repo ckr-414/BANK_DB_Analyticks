@@ -71,8 +71,7 @@
   INSERT INTO {{ var('target_database') }}.{{ var('audit_schema') }}.dbt_run_log
     (run_log_id,dbt_run_id,model_name,status,run_started_at,
      dag_id,job_name,run_by,env,enter_dt,enter_by,update_dt,update_by)
-  VALUES (
-    UUID_STRING(), '{{ invocation_id }}', 'PIPELINE_START', 'RUNNING',
+    SELECT UUID_STRING(), '{{ invocation_id }}', 'PIPELINE_START', 'RUNNING',
     CURRENT_TIMESTAMP(),
     '{{ var("dag_id") }}',
     '{{ var("job_name") }}',
@@ -82,7 +81,6 @@
     '{{ var("job_name") }}',
     CURRENT_TIMESTAMP(),
     '{{ var("job_name") }}'
-  )
 {% endmacro %}
 
 

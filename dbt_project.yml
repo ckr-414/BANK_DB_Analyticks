@@ -36,6 +36,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 # env_var('NAME','default') reads the value set in the UI.
 # Models & macros below reference var('...') ONLY.
 
+
 models:
   bank_analytics:
     staging:
