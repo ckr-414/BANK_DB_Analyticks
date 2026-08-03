@@ -13,7 +13,7 @@ SELECT
   SUM(CASE WHEN status='COMPLETED' THEN amount ELSE 0 END) AS completed_sales,
   SUM(CASE WHEN status='REFUNDED' THEN amount ELSE 0 END)  AS refunded_amount,
   COUNT(DISTINCT customer_id) AS unique_customers
-FROM {{ ref('stg_transactions') }}
+FROM {{ ref('stg_transactions_sf') }}
 {% if is_incremental() %}
 WHERE transaction_date >= (SELECT DATEADD(day,-3,MAX(transaction_date)) FROM {{ this }})  -- reprocess a trailing window for late data
 {% endif %}

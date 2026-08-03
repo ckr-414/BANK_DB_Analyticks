@@ -2,8 +2,8 @@
 
 SELECT
   customer_id, customer_name, email, region, segment,
-  signup_date, is_active, updated_at
-FROM {{ source('bronze', 'customers_raw') }}
+  signup_date, is_active, updated_at,{{bank_analytics.audit_columns()}}
+FROM {{ source('raw_bronze', 'customers_raw') }}
 QUALIFY ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY updated_at DESC) = 1  -- dedups any duplicate customer_id rows
 
 {% if is_incremental() %}
