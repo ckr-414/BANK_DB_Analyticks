@@ -1,6 +1,7 @@
 -- models/staging/stg_transactions.sql
 {{ config(materialized='view',
     schema=var('staging_schema'), database=var('target_database'), tags=['staging']) }}
+
 SELECT
     transaction_id, account_id,
     CAST(transaction_date AS DATE)                       AS transaction_date,
@@ -16,3 +17,19 @@ SELECT
     {{ audit_columns() }}
 FROM {{ source('bank_raw','raw_transactions') }}
 WHERE UPPER(status) != 'FAILED' AND amount > 0
+
+
+Save
+1234567891011121314151617181920
+
+
+
+
+
+Commands
+Problems
+76
+Results
+Code quality
+Compiled code
+Lineage$0

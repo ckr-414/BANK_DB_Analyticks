@@ -59,6 +59,15 @@ models:
       +schema:   "{{ var('marts_schema') }}"
       +database: "{{ var('target_database') }}"
       +tags: ['incremental']
+    sf_silver:
+      +database: raw_db
+      +schema: silver
+      +tags: ['incremental_silver']
+    sf_gold:
+      +database: raw_db
+      +schema: gold
+      +tags: ['incremental_gold']
+    
 
 snapshots:
   bank_analytics:

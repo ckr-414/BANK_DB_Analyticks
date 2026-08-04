@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: raw_bronze
+    database: raw_db
+    schema: bronze
+    tables:
+      - name: customers_raw
+      - name: transactions_raw
